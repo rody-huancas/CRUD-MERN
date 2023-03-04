@@ -1,6 +1,15 @@
-import React from "react";
+import { deleteTaskRequest } from "../api/Task.api";
 
 const TaskCard = ({ task }) => {
+  const handleDelete = async (id) => {
+    try {
+      const response = await deleteTaskRequest(id);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <h2>{task.title}</h2>
@@ -8,7 +17,7 @@ const TaskCard = ({ task }) => {
       <span>{task.done == 1 ? "✓" : "❌"}</span>
       <span>{task.createdAt}</span>
 
-      <button>Eliminar</button>
+      <button onClick={() => handleDelete(task.id)}>Eliminar</button>
       <button>Actualizar</button>
     </div>
   );
