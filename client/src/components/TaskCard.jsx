@@ -1,14 +1,9 @@
-import { deleteTaskRequest } from "../api/Task.api";
+import { useTasks } from "../context/TaskProvider";
+import { useNavigate } from "react-router-dom";
 
 const TaskCard = ({ task }) => {
-  const handleDelete = async (id) => {
-    try {
-      const response = await deleteTaskRequest(id);
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { deleteTask } = useTasks();
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -17,8 +12,8 @@ const TaskCard = ({ task }) => {
       <span>{task.done == 1 ? "✓" : "❌"}</span>
       <span>{task.createdAt}</span>
 
-      <button onClick={() => handleDelete(task.id)}>Eliminar</button>
-      <button>Actualizar</button>
+      <button onClick={() => deleteTask(task.id)}>Eliminar</button>
+      <button onClick={() => navigate(`/edit/${task.id}`)}>Actualizar</button>
     </div>
   );
 };
