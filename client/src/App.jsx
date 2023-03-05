@@ -7,15 +7,19 @@ import Taskpage from "./pages/Taskpage";
 
 const App = () => {
   return (
-    <TaskContextProvider>
+    <div className="bg-zinc-900 h-screen">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Taskpage />} />
-        <Route path="/new" element={<TaskForm />} />
-        <Route path="/edit/:id" element={<TaskForm />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </TaskContextProvider>
+      <div className="container mx-auto mt-10">
+        <TaskContextProvider>
+          <Routes>
+            <Route path="/" element={<Taskpage />} />
+            <Route path="/new" element={<TaskForm />} />
+            <Route path="/edit/:id" element={<TaskForm />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </TaskContextProvider>
+      </div>
+    </div>
   );
 };
 

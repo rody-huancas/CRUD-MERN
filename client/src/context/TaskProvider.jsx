@@ -45,7 +45,6 @@ export const TaskContextProvider = ({ children }) => {
   const getTask = async (id) => {
     try {
       const response = await getTaskRequest(id);
-      console.log(response);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -55,7 +54,6 @@ export const TaskContextProvider = ({ children }) => {
   const updateTask = async (id, newFields) => {
     try {
       const response = await updateTaskRequest(id, newFields);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
